@@ -1,13 +1,19 @@
 'use client'
 
 import Image from "next/image";
+import { Advent_Pro } from "next/font/google";
 import { useState, useRef } from 'react';
 import LinearSpeedometer from './components/speedometer.jsx';
 
 // A simple utility function to convert bytes per second to Mbps
+
 function bytesToMbps(bytesPerSecond: number): number {
   return (bytesPerSecond * 8) / (1024 * 1024);
 }
+
+const adventPro = Advent_Pro({
+  subsets: ['latin'],
+});
 
 export default function Home() {
   const [averageSpeedMbps, setAverageSpeedMbps] = useState<number | null>(null);
@@ -98,13 +104,18 @@ export default function Home() {
     }
 
     setIsTesting(false);
+
+    
+
+    
   };
 
   return (
     <main>
       {/* Speed text & start button */}
+
       <div className="flex justify-center mt-64">
-        <h1 className="text-center text-8xl mr-8">{averageSpeedMbps !== null ? (averageSpeedMbps.toFixed(2)) : (0)} mbps</h1>
+        <h1 className="{`${adventPro.className} text-center text-8xl mr-8">{averageSpeedMbps !== null ? (averageSpeedMbps.toFixed(2)) : (0)} mbps</h1>
       </div>
 
       <div className="flex justify-center mt-6">
