@@ -1,6 +1,5 @@
 'use client'
 
-import Image from "next/image";
 import { Advent_Pro } from "next/font/google";
 import { useState, useRef } from 'react';
 import LinearSpeedometer from './components/speedometer.jsx';
@@ -19,7 +18,7 @@ export default function Home() {
   const [averageSpeedMbps, setAverageSpeedMbps] = useState<number | null>(null);
   const [isTesting, setIsTesting] = useState<boolean>(false);
   const [completedRuns, setCompletedRuns] = useState<number>(0);
-  const [error, setError] = useState<string | null>(null);
+  // const [error, setError] = useState<string | null>(null);
 
   const totalBytesRef = useRef<number>(0);
   const totalTimeRef = useRef<number>(0);
@@ -54,17 +53,17 @@ export default function Home() {
       }
 
       const reader = response.body.getReader();
-      let downloadedBytes = 0;
+      // let downloadedBytes = 0;
       let done = false;
 
       while (!done) {
-        const chunkStartTime = performance.now();
+        // const chunkStartTime = performance.now();
         const { done: readerDone, value } = await reader.read();
         const chunkEndTime = performance.now();
 
         if (value) {
           const chunkSize = value.length;
-          downloadedBytes += chunkSize;
+          // downloadedBytes += chunkSize;
           totalBytesRef.current += chunkSize;
 
           // Update total time (approximate) after each chunk
@@ -85,14 +84,15 @@ export default function Home() {
       const runs = completedRuns + 1;
       setCompletedRuns(runs);
 
-    } catch (err: any) {
-      setError(err.message ?? "Unknown error during speed test.");
+    } catch (err) {
+      // setError("Unknown error during speed test: " + err.message);
+      console.error(err);
     }
   };
 
   const handleStartTest = async () => {
     setIsTesting(true);
-    setError(null);
+    // setError(null);
     setAverageSpeedMbps(null);
     setCompletedRuns(0);
     totalBytesRef.current = 0;
