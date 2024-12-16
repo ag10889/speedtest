@@ -3,12 +3,12 @@ import React from 'react';
 const LinearSpeedometer = ({
   speed = 50,
   maxSpeed = 100,
-  tickCount = 9,
-  width = 300,
-  height = 20,
+  tickCount = 13,
+  width = 800,
+  height = 40,
   backgroundColor = '#333',
   tickColor = '#111',
-  tickHeight = 5,
+  tickHeight = 10,
   tickWidth = 1
 }) => {
   // Ensure speed does not exceed maxSpeed or drop below 0
@@ -59,9 +59,9 @@ const LinearSpeedometer = ({
           return <div key={index} style={tickStyle}></div>;
         })}
       </div>
-      <div style={{ textAlign: 'center', marginTop: '5px', fontSize: '14px', color: '#333' }}>
+      {/* <div style={{ textAlign: 'center', marginTop: '5px', fontSize: '14px', color: '#333' }}>
         {currentSpeed} / {maxSpeed}
-      </div>
+      </div> */}
     </div>
   );
 };
