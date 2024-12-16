@@ -115,12 +115,12 @@ export default function Home() {
       {/* Speed text & start button */}
 
       <div className="flex justify-center mt-64">
-        <h1 className="{`${adventPro.className} text-center text-8xl mr-8">{averageSpeedMbps !== null ? (averageSpeedMbps.toFixed(2)) : (0)} mbps</h1>
+        <h1 className={`${adventPro.className} text-center text-8xl mr-8`}>{averageSpeedMbps !== null ? (averageSpeedMbps.toFixed(2)) : (0)} mbps</h1>
       </div>
 
       <div className="flex justify-center mt-6">
-        <button onClick={handleStartTest} disabled={isTesting} className="relative h-fit m-auto inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-tr from-[#770000] to-[#dd0000] group-hover:from-[#770000] group-hover:to-[#dd0000] hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800">
-          <span className="relative px-8 py-3 transition-all ease-in duration-75 bg-white dark:bg-[#0a0a0a] rounded-md group-hover:bg-opacity-0 text-xl">
+        <button onClick={handleStartTest} disabled={isTesting} className={`{${adventPro.className} relative h-fit m-auto inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-tr from-[#770000] to-[#dd0000] group-hover:from-[#770000] group-hover:to-[#dd0000] hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800`}>
+          <span className={`{${adventPro.className} relative px-8 py-3 transition-all ease-in duration-75 bg-white dark:bg-[#0a0a0a] rounded-md group-hover:bg-opacity-0 text-xl`}>
             Start
           </span>
         </button>
