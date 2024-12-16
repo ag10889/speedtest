@@ -113,30 +113,17 @@ export default function Home() {
   return (
     <main>
       {/* Speed text & start button */}
-      <div className="flex items-center justify-center h-1/2">
-       
-        <div className="flex justify-center">
 
-            <h1 className={`${adventPro.className} mt-64 text-center text-8xl mr-8`}>
-              {averageSpeedMbps !== null ? (averageSpeedMbps.toFixed(2)) : (0)} mbps
-            </h1>
-          
-          <button onClick={handleStartTest} disabled={isTesting} className="bg-red-500 hover:bg-red-600 text-white font-bold p-4 rounded  mt-64">
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              strokeWidth="2" 
-              stroke="currentColor" 
-              className="w-6 h-6"
-              strokeLinecap="round" 
-              strokeLinejoin="round"
-            >
-              <path d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
-            </svg>
-          </button>
-        </div>
+      <div className="flex justify-center mt-64">
+        <h1 className="{`${adventPro.className} text-center text-8xl mr-8">{averageSpeedMbps !== null ? (averageSpeedMbps.toFixed(2)) : (0)} mbps</h1>
+      </div>
 
+      <div className="flex justify-center mt-6">
+        <button onClick={handleStartTest} disabled={isTesting} className="relative h-fit m-auto inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-tr from-[#770000] to-[#dd0000] group-hover:from-[#770000] group-hover:to-[#dd0000] hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800">
+          <span className="relative px-8 py-3 transition-all ease-in duration-75 bg-white dark:bg-[#0a0a0a] rounded-md group-hover:bg-opacity-0 text-xl">
+            Start
+          </span>
+        </button>
       </div>
 
       {/* Speedometer */}
