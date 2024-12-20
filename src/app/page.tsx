@@ -1,8 +1,11 @@
 'use client'
 
 import { Advent_Pro } from "next/font/google";
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import LinearSpeedometer from './components/speedometer.jsx';
+import WeatherInformation from './components/weather.jsx';
+import weatherInformation from "./components/weather.jsx";
+
 
 // A simple utility function to convert bytes per second to Mbps
 
@@ -104,11 +107,35 @@ export default function Home() {
     }
 
     setIsTesting(false);
-
+    const WeatherComponent = () => {
+      const [forecastData, setForecastData] = useState(null);
+    
+      useEffect(() => {
+        const fetchForecast = async () => {
+          try {
+            // 1. Get metadata from points endpoint
+            const pointsResponse = await fetch('https://api.weather.gov/points/33.7501,-84.3885');
+            const pointsData = await pointsResponse.json();
+            const forecastUrl = pointsData.properties.forecast;
+    
+            // 2. Get forecast data
+            const forecastResponse = await fetch(forecastUrl);
+            const forecast = await forecastResponse.json();
+            setForecastData(forecast);
+          } catch (error) {
+            console.error('Error fetching weather data:', error);
+          }
+        };
+    
+        fetchForecast();
+      }, []);
+      
+    }
     
 
     
   };
+  
 
   return (
     <main>
@@ -129,6 +156,16 @@ export default function Home() {
       {/* Speedometer */}
       <div className="flex justify-center mt-24">
         <LinearSpeedometer speed={averageSpeedMbps !== null ? averageSpeedMbps : 0} />
+      </div>
+
+      <div className = "flex justify-center mt-24">
+        
+      </div>
+
+      <div>
+        <h1 className={`${adventPro.className} text-center text-7xl mr-7`}>{}
+          test
+        </h1>
       </div>
 
       {/* Test Code */}
