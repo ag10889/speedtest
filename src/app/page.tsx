@@ -1,5 +1,6 @@
 'use client'
 
+
 import { Advent_Pro } from "next/font/google";
 import { useState, useRef } from 'react';
 import LinearSpeedometer from './components/speedometer.jsx';
@@ -18,13 +19,14 @@ export default function Home() {
   const [averageSpeedMbps, setAverageSpeedMbps] = useState<number | null>(null);
   const [isTesting, setIsTesting] = useState<boolean>(false);
   const [completedRuns, setCompletedRuns] = useState<number>(0);
-  // const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const totalBytesRef = useRef<number>(0);
   const totalTimeRef = useRef<number>(0);
 
   const testDownloadSpeed = async () => {
     const testFileUrl = "/api/proxy"; // The proxy route
+    
 
     const startTime = performance.now();
     try {
@@ -34,6 +36,7 @@ export default function Home() {
       }
 
       if (!response.body) {
+        // Non-streamed download scenario 
         // If no streaming, fallback to arrayBuffer (final measurement only)
         const arrayBuffer = await response.arrayBuffer();
         const endTime = performance.now();
@@ -51,7 +54,8 @@ export default function Home() {
         setAverageSpeedMbps(avgSpeedMbps);
         return;
       }
-
+      //Streamed download scenario 
+      
       const reader = response.body.getReader();
       // let downloadedBytes = 0;
       let done = false;
@@ -84,15 +88,15 @@ export default function Home() {
       const runs = completedRuns + 1;
       setCompletedRuns(runs);
 
-    } catch (err) {
-      // setError("Unknown error during speed test: " + err.message);
-      console.error(err);
-    }
+    } 
+     catch (error: any) {
+       setError("Unknown error during speed test.");
+     }
   };
 
   const handleStartTest = async () => {
     setIsTesting(true);
-    // setError(null);
+    setError(null);
     setAverageSpeedMbps(null);
     setCompletedRuns(0);
     totalBytesRef.current = 0;
