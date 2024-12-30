@@ -2,12 +2,7 @@ import React from 'react';
 
 const weatherInformation = ({
   temperature = 25,
-  precipitation = 25,
-  maxTemp = 212,
-  maxPrec = 100,
-  width = 500,
-  height = 100,
-  backgroundColor = '#333'
+  
 }) => {
   
   const currentTemp = Math.max(0, Math.min(temperature, maxTemp));
