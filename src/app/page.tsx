@@ -1,7 +1,7 @@
 'use client'
 
 import { Advent_Pro } from "next/font/google";
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import LinearSpeedometer from './components/speedometer.jsx';
 
 
