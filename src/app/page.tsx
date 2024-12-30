@@ -26,6 +26,7 @@ export default function Home() {
   const totalTimeRef = useRef<number>(0);
 
   const testDownloadSpeed = async () => {
+    ///The "meat of the iceberg" all the behind logic used in creation of the displayed data 
     const testFileUrl = "/api/proxy"; // The proxy route
 
     const startTime = performance.now();
@@ -104,6 +105,7 @@ export default function Home() {
     for (let i = 0; i < numberOfRuns; i++) {
       await testDownloadSpeed();
     }
+    /// ^"Tip of the iceberg" what is being displayed, in one formatted area 
 
     
     
