@@ -144,8 +144,7 @@ export default function Home() {
 
       <div>
         <h1 className={`${adventPro.className} text-center text-7xl mr-7`}>{}
-          test
-          
+          Passed time
         </h1>
       </div>
 
