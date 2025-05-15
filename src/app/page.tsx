@@ -144,8 +144,7 @@ export default function Home() {
 
       <div>
         <h1 className={`${adventPro.className} text-center text-7xl mr-7`}>{}
-          
-          
+          Throttled by Netlify since 2024          
         </h1>
       </div>
 
